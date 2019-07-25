@@ -1,7 +1,12 @@
 from django.shortcuts import render
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+import json
 from blog.paytm import Checksum
 
-
+@never_cache
+@csrf_exempt
 def processOrder(request):
     req = request.POST
     order_id = 1
@@ -19,5 +24,5 @@ def processOrder(request):
     # Generate checksum by parameters we have
     # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
     checksum = Checksum.generate_checksum(paytmParams, "HJFvS_G&ppt9T5@_")
-
+    return HttpResponse(json.dumps("Done"), content_type='application/json')
 
