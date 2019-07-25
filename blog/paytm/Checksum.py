@@ -46,7 +46,7 @@ def __id_generator__(size=6, chars=string.ascii_uppercase + string.digits + stri
 def __get_param_string__(params, escape_refund=True):
     params_string = []
     for key in sorted(params.keys()):
-        if("|" in params[key] or (escape_refund == True and "REFUND" in params[key])):
+        if "|" in params[key] or (escape_refund == True and "REFUND" in params[key]):
             respons_dict = {}
             exit()
         value = params[key]
