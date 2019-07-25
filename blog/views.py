@@ -33,7 +33,7 @@ def processOrder(request):
     respons_dict['INDUSTRY_TYPE_ID'] = 'Retail';  # Provided by Paytm
     respons_dict['CHANNEL_ID'] = 'WAP';  # Provided by Paytm
     respons_dict['TXN_AMOUNT'] = '1.00';  # transaction amount
-    respons_dict['WEBSITE'] = 'XXXXXXXX';  # Provided by Paytm
+    respons_dict['WEBSITE'] = 'WEBSTAGING';  # Provided by Paytm
     respons_dict['EMAIL'] = 'abc@gmail.com';  # customer email id
     respons_dict['MOBILE_NO'] = '7777777777';  # customer 10 digit mobile no.
     respons_dict['CALLBACK_URL'] = 'https://domain/paytmchecksum/response';
