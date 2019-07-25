@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.paytm import Checksum, generateChecksum, verifyChecksum
+from blog.paytm import Checksum
 
 
 def processOrder(request):
