@@ -24,7 +24,7 @@ from blog import views
 urlpatterns = [
     #path('admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
-    url(r'^process_order/', views.processOrder),
+    url(r'^processOrder/', views.processOrder),
 
 
 ]
