@@ -27,7 +27,7 @@ def processOrder(request):
     # form = cgi.FieldStorage()
     respons_dict = {}
 
-    respons_dict['MID'] = 'XXXXXXXXXXXXXXXXXXXX';  # Provided by Paytm
+    respons_dict['MID'] = 'dbcAUx53699294235269';  # Provided by Paytm
     respons_dict['ORDER_ID'] = 'ORDER0000001';  # unique OrderId for every request
     respons_dict['CUST_ID'] = 'CUST00001';  # unique customer identifier
     respons_dict['INDUSTRY_TYPE_ID'] = 'Retail';  # Provided by Paytm
