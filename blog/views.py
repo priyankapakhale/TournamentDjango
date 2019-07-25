@@ -21,22 +21,22 @@ def processOrder(request):
     paytmParams["MID"] = "dbcAUx53699294235269"
     paytmParams["ORDERID"] = order_id
 
-    MERCHANT_KEY = 'HJFvS_G&ppt9T5@_';
+    MERCHANT_KEY = 'HJFvS_G&ppt9T5@_'
     # import cgi
 
     # form = cgi.FieldStorage()
     respons_dict = {}
 
-    respons_dict['MID'] = 'dbcAUx53699294235269';  # Provided by Paytm
-    respons_dict['ORDER_ID'] = 'ORDER0000001';  # unique OrderId for every request
-    respons_dict['CUST_ID'] = 'CUST00001';  # unique customer identifier
-    respons_dict['INDUSTRY_TYPE_ID'] = 'Retail';  # Provided by Paytm
-    respons_dict['CHANNEL_ID'] = 'WAP';  # Provided by Paytm
-    respons_dict['TXN_AMOUNT'] = '1.00';  # transaction amount
-    respons_dict['WEBSITE'] = 'WEBSTAGING';  # Provided by Paytm
-    respons_dict['EMAIL'] = 'abc@gmail.com';  # customer email id
-    respons_dict['MOBILE_NO'] = '7777777777';  # customer 10 digit mobile no.
-    respons_dict['CALLBACK_URL'] = 'https://domain/paytmchecksum/response';
+    respons_dict['MID'] = 'dbcAUx53699294235269'  # Provided by Paytm
+    respons_dict['ORDER_ID'] = 'ORDER0000001'  # unique OrderId for every request
+    respons_dict['CUST_ID'] = 'CUST00001'  # unique customer identifier
+    respons_dict['INDUSTRY_TYPE_ID'] = 'Retail'  # Provided by Paytm
+    respons_dict['CHANNEL_ID'] = 'WAP' # Provided by Paytm
+    respons_dict['TXN_AMOUNT'] = '1.00'  # transaction amount
+    respons_dict['WEBSITE'] = 'WEBSTAGING'  # Provided by Paytm
+    respons_dict['EMAIL'] = 'abc@gmail.com'  # customer email id
+    respons_dict['MOBILE_NO'] = '7777777777'  # customer 10 digit mobile no.
+    respons_dict['CALLBACK_URL'] = 'https://domain/paytmchecksum/response'
 
     checksum = Checksum.generate_checksum(respons_dict, MERCHANT_KEY)
 
@@ -44,9 +44,9 @@ def processOrder(request):
 
     # paramarr = respons_dict;
 
-    respons_dict['CHECKSUMHASH'] = checksum;
+    respons_dict['CHECKSUMHASH'] = checksum
 
-    print(respons_dict);
+    print(respons_dict)
 
     # Generate checksum by parameters we have
     # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
