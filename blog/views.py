@@ -51,5 +51,5 @@ def processOrder(request):
     # Generate checksum by parameters we have
     # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
 
-    return HttpResponse(json.dumps("Done"), content_type='application/json')
+    return HttpResponse(json.dumps(respons_dict), content_type='application/json')
 
