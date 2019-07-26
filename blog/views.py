@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
 from blog.paytm import Checksum
+from django.core import serializers
+from .models import Tournament, Order
 
 @never_cache
 @csrf_exempt
@@ -52,4 +54,20 @@ def processOrder(request):
     # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
 
     return HttpResponse(json.dumps(respons_dict), content_type='application/json')
+
+
+def getTournamentList(request):
+    req = request.POST
+
+    query_set = Tournament.objects.all()
+    json_data = serializers.serialize('json', query_set)
+    data = json.loads(json_data)
+    print(data)
+
+    tournament_item = dict()
+
+
+
+    return HttpResponse(json.dumps(data), content_type='application/json')
+
 
