@@ -63,7 +63,6 @@ def getTournamentList(request):
     query_set = Tournament.objects.all()
     json_data = serializers.serialize('json', query_set)
     data = json.loads(json_data)
-    print(data)
 
     tournament_list =list()
     for item in data:
@@ -72,6 +71,7 @@ def getTournamentList(request):
 
     mydata = dict()
     mydata['tournament_list'] = tournament_list
+    print(mydata)
 
     return HttpResponse(json.dumps(mydata), content_type='application/json')
 
