@@ -55,7 +55,8 @@ def processOrder(request):
 
     return HttpResponse(json.dumps(respons_dict), content_type='application/json')
 
-
+@never_cache
+@csrf_exempt
 def getTournamentList(request):
     req = request.POST
 
