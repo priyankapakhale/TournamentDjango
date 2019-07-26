@@ -64,10 +64,14 @@ def getTournamentList(request):
     data = json.loads(json_data)
     print(data)
 
-    tournament_item = dict()
+    tournament_list = dict()
+    for item in data:
+        tournament_item = dict()
+        tournament_item = item['fields']
+        tournament_list.add(tournament_item)
 
 
 
-    return HttpResponse(json.dumps(data), content_type='application/json')
+    return HttpResponse(json.dumps(tournament_list), content_type='application/json')
 
 
