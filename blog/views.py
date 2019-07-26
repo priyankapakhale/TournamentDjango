@@ -58,7 +58,20 @@ def processOrder(request):
 @never_cache
 @csrf_exempt
 def getTournamentList(request):
+
     req = request.POST
+
+    PLATFORMS = (
+        (1, 'Mobile'),
+        (2, 'PC'),
+        (3, 'XBOX'),
+        (4, 'Playstation'),
+    )
+    GAME_MODES = (
+        (1, 'SOLO'),
+        (2, 'DUO'),
+        (3, 'SQUAD'),
+    )
 
     query_set = Tournament.objects.all()
     json_data = serializers.serialize('json', query_set)
@@ -67,7 +80,10 @@ def getTournamentList(request):
     tournament_list =list()
     for item in data:
         x = item['fields']
+        x['game_mode'] = GAME_MODES[x['game_mode']]
+        x['platform'] = PLATFORMS[x['platform']]
         tournament_list.append(x)
+
 
     mydata = dict()
     mydata['tournament_list'] = tournament_list
