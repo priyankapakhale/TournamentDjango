@@ -22,8 +22,8 @@ from django.conf.urls import url
 from blog import views
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
-    url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
+    #url(r'^admin/', admin.site.urls),
     url(r'^processOrder/', views.processOrder),
 
 
