@@ -61,17 +61,6 @@ def getTournamentList(request):
 
     req = request.POST
 
-    PLATFORMS = (
-        (1, 'Mobile'),
-        (2, 'PC'),
-        (3, 'XBOX'),
-        (4, 'Playstation'),
-    )
-    GAME_MODES = (
-        (1, 'SOLO'),
-        (2, 'DUO'),
-        (3, 'SQUAD'),
-    )
 
     query_set = Tournament.objects.all()
     json_data = serializers.serialize('json', query_set)
@@ -80,8 +69,21 @@ def getTournamentList(request):
     tournament_list =list()
     for item in data:
         x = item['fields']
-        x['game_mode'] = GAME_MODES[x['game_mode']]
-        x['platform'] = PLATFORMS[x['platform']]
+        if x['game_mode'] == 1:
+            x['game_mode'] = 'SOLO'
+        elif x['game_mode'] == 2:
+            x['game_mode'] = 'DUO'
+        else:
+            x['game_mode'] = 'SQUAD'
+
+        if x['platform'] == 1:
+            x['platform'] = 'Mobile'
+        elif x['platform'] == 2:
+            x['platform'] = 'PC'
+        elif x['platform'] == 3:
+            x['platform'] = 'XBOX'
+        else:
+            x['platform'] = 'Playstation'
         tournament_list.append(x)
 
 
