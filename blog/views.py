@@ -35,7 +35,7 @@ def processOrder(request):
     respons_dict['TXN_AMOUNT'] = '1.00'  # transaction amount
     respons_dict['WEBSITE'] = 'WEBSTAGING'  # Provided by Paytm
     respons_dict['EMAIL'] = 'abc@gmail.com'  # customer email id
-    respons_dict['MOBILE_NO'] = '8291129206'  # customer 10 digit mobile no.
+    respons_dict['MOBILE_NO'] = '7777777777'  # customer 10 digit mobile no.
     respons_dict['CALLBACK_URL'] = 'https://domain/paytmchecksum/response'
 
     checksum = Checksum.generate_checksum(respons_dict, MERCHANT_KEY)
