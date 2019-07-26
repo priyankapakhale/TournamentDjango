@@ -53,22 +53,6 @@ def processOrder(request):
 
     # Generate checksum by parameters we have
     # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
-    print('<html>')
-    print('<head>')
-    print('<title>Merchant Checkout Page</title>')
-    print('</head>')
-    print('<body>')
-    print('<center><h1>Please do not refresh this page...</h1></center>')
-    print('<form method="post" action="' + url + '" name="paytm_form">')
-    for name, value in paytmParams.items():
-        print('<input type="hidden" name="' + name + '" value="' + value + '">')
-    print('<input type="hidden" name="CHECKSUMHASH" value="' + checksum + '">')
-    print('</form>')
-    print('<script type="text/javascript">')
-    print('document.paytm_form.submit();')
-    print('</script>')
-    print('</body>')
-    print('</html>')
 
     return HttpResponse(json.dumps(respons_dict), content_type='application/json')
 
