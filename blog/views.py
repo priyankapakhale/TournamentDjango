@@ -38,7 +38,7 @@ def processOrder(request):
     respons_dict['WEBSITE'] = 'WEBSTAGING'  # Provided by Paytm
     respons_dict['EMAIL'] = 'abc@gmail.com'  # customer email id
     respons_dict['MOBILE_NO'] = '7777777777'  # customer 10 digit mobile no.
-    respons_dict['CALLBACK_URL'] = 'https://domain/paytmchecksum/response'
+    respons_dict['CALLBACK_URL'] = 'https://priyanka030493.pythonanywhere.com/handlePayment/'
 
     checksum = Checksum.generate_checksum(respons_dict, MERCHANT_KEY)
 
@@ -55,6 +55,11 @@ def processOrder(request):
     # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
 
     return HttpResponse(json.dumps(respons_dict), content_type='application/json')
+
+@never_cache
+@csrf_exempt
+def handlePayment(request):
+    return HttpResponse('done')
 
 @never_cache
 @csrf_exempt

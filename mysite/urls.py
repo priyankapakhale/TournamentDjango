@@ -26,6 +26,7 @@ urlpatterns = [
     #url(r'^admin/', admin.site.urls),
     url(r'^processOrder/', views.processOrder),
     url(r'^getTournamentList/', views.getTournamentList),
+    url(r'^handlePayment/',views.handlePayment),
 
 
 ]
