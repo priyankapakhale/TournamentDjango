@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'priyanka030493$mydb',
         'USER': 'priyanka030493',
         'PASSWORD': 'tournamentapp',
-        'HOST': 'py13.mysql.pythonanywhere-services.com',
+        'HOST': 'priyanka030493.mysql.pythonanywhere-services.com',
     }
 }
 
