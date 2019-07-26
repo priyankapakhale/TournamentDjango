@@ -33,6 +33,7 @@ def processOrder(request):
     respons_dict['EMAIL'] = 'abc@gmail.com'  # customer email id
     respons_dict['MOBILE_NO'] = '7777777777'  # customer 10 digit mobile no.
     respons_dict['CALLBACK_URL'] = 'https://priyanka030493.pythonanywhere.com/handlePayment/'
+    respons_dict['CALLBACK_URL'] = req['CALLBACK_URL']
 
     checksum = Checksum.generate_checksum(respons_dict, MERCHANT_KEY)
 
