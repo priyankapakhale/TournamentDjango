@@ -9,6 +9,11 @@ from .models import Tournament, Order
 
 @never_cache
 @csrf_exempt
+def addUserTournament(request):
+    pass
+
+@never_cache
+@csrf_exempt
 def processOrder(request):
     req = request.POST
     amount = req['TXN_AMOUNT']

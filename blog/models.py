@@ -9,6 +9,17 @@ class Order(models.Model):
     mobile_no = models.CharField(max_length=10)
     amount = models.FloatField(default=0)
 
+class User(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    mobile_no = models.CharField(max_length=10)
+
+class UserOrders(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+
 class Tournament(models.Model):
     PLATFORMS = (
         (1, 'Mobile'),
@@ -40,7 +51,10 @@ class Tournament(models.Model):
     rules = models.CharField(max_length=5000)
 
 
-
+class UserTournaments(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE)
 
 
 
