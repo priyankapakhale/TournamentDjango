@@ -72,7 +72,7 @@ def getTournamentList(request):
         tournament_list.append(tournament_item)
 
 
-
+    print(tournament_list)
     return HttpResponse(json.dumps(tournament_list), content_type='application/json')
 
 
