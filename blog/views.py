@@ -117,7 +117,7 @@ def addUserTournament(request):
 def getUserTournamentList(request):
     req = request.POST
     #user_id = req['user_id']
-    user_id = 'user1'
+    user_id = 1
 
     query_set = UserTournaments.objects.filter(user = user_id)
     json_data = serializers.serialize('json', query_set)
