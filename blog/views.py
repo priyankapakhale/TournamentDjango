@@ -129,6 +129,9 @@ def getUserTournamentList(request):
     for item in data:
         print(item)
         print(item['fields'])
+        x = item['fields']
+        tournament_id = x['tournament']
+        print(tournament_id)
 
 
     return HttpResponse("done")
