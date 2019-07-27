@@ -119,7 +119,7 @@ def addUserTournament(request):
     #if tournament not full, then increment joined count by 1
     if joined_count < team_count:
         joined_count += 1
-        Tournament.objects.get(id = tournament_id).update(joined_count = joined_count)
+        Tournament.objects.filter(id = tournament_id).update(joined_count = joined_count)
         ProfileHelper.addUserTournament(user_id, tournament_id)
         return HttpResponse('done')
     #else return team full message
