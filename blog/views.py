@@ -140,8 +140,10 @@ def getUserTournamentList(request):
         tournament = tournament[0]['fields']
         tournament['tournament_id'] = tournament_id
         print(tournament)
+        tournament_list.append(tournament)
 
+    mydata = dict()
+    mydata['tournament_list'] = tournament_list
 
-    return HttpResponse("done")
-    #return HttpResponse(json.dumps(mydata), content_type='application/json')
+    return HttpResponse(json.dumps(mydata), content_type='application/json')
 
