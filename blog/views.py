@@ -126,21 +126,8 @@ def getUserTournamentList(request):
     tournament_list = list()
     print('data = ')
     print(data)
-    for item in data:
-        print('item = ')
-        print(item)
-        print('item[fields] = ')
-        print(item['fields'])
-        tournament_id = item['fields']['tournament']
-        query_set = Tournament.objects.filter(tournament = tournament_id)
-        json_data = serializers.serialize('json',query_set)
-        t = json.loads(json_data)
-        print(t)
 
 
-
-    mydata = dict()
-    mydata['tournament_list'] = tournament_list
-
-    return HttpResponse(json.dumps(mydata), content_type='application/json')
+    return HttpResponse("done")
+    #return HttpResponse(json.dumps(mydata), content_type='application/json')
 
