@@ -126,10 +126,13 @@ def getUserTournamentList(request):
     tournament_list = list()
     print(data)
     for item in data:
-        x = item['fields']
-        id = item['pk']
-        x['tournament_id'] = id
-        tournament_list.append(x)
+        tournament_id = item['fields']['tournament']
+        query_set = Tournament.objects.filter(tournament = tournament_id)
+        json_data = serializers.serialize('json',query_set)
+        t = json.loads(json_data)
+        print(t)
+
+
 
     mydata = dict()
     mydata['tournament_list'] = tournament_list
