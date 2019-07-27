@@ -133,6 +133,7 @@ def getUserTournamentList(request):
         tournament_id = x['tournament']
         print(tournament_id)
         tournament = Tournament.objects.filter(id = tournament_id)
+        print(tournament)
         tournament = tournament[0]['fields']
         tournament['tournament_id'] = tournament_id
         print(tournament)
