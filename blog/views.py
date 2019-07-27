@@ -125,6 +125,14 @@ def getUserTournamentList(request):
 
     tournament_list = list()
     print(data)
+    for item in data:
+        x = item['fields']
+        id = item['pk']
+        x['tournament_id'] = id
+        tournament_list.append(x)
 
-    return HttpResponse('done')
+    mydata = dict()
+    mydata['tournament_list'] = tournament_list
+
+    return HttpResponse(json.dumps(mydata), content_type='application/json')
 
