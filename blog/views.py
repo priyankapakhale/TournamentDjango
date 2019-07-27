@@ -110,7 +110,7 @@ def addUserTournament(request):
 
     #check joined count
     query_set = Tournament.objects.filter(id = tournament_id)
-    json_data = serializers.serialize(query_set)
+    json_data = serializers.serialize('json',query_set)
     data = json.loads(json_data)
     data = data[0]['fields']
     joined_count = data['joined_count']
