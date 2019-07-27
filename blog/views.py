@@ -109,7 +109,7 @@ def addUserTournament(request):
     tournament_id = req['tournament_id']
 
     #first check if user has already registered or not
-    query_set = UserTournaments.objects.filter(user_id = user_id, tournament_id = tournament_id)
+    query_set = UserTournaments.objects.filter(user_id = 2, tournament_id = tournament_id)
     print(query_set)
 
     #check joined count
