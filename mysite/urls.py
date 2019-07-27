@@ -27,6 +27,9 @@ urlpatterns = [
     url(r'^processOrder/', views.processOrder),
     url(r'^getTournamentList/', views.getTournamentList),
     url(r'^handlePayment/',views.handlePayment),
+    url(r'^addUserTournament/', views.addUserTournament),
+    url(r'^getUserTournamentList/',views.getUserTournamentList),
+
 
 
 ]
