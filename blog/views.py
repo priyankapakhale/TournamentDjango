@@ -8,10 +8,6 @@ from django.core import serializers
 from .models import Tournament, Order, UserOrders, UserTournaments
 from blog import ProfileHelper
 
-@never_cache
-@csrf_exempt
-def addUserTournament(request):
-    pass
 
 @never_cache
 @csrf_exempt
