@@ -132,8 +132,11 @@ def getUserTournamentList(request):
         x = item['fields']
         tournament_id = x['tournament']
         print(tournament_id)
-        tournament = Tournament.objects.filter(tournament = tournament_id)
+        tournament = Tournament.objects.filter(id = tournament_id)
+        tournament = tournament[0]['fields']
+        tournament['tournament_id'] = tournament_id
         print(tournament)
+
 
     return HttpResponse("done")
     #return HttpResponse(json.dumps(mydata), content_type='application/json')
