@@ -112,7 +112,10 @@ def addUserTournament(request):
     query_set = UserTournaments.objects.filter(user_id = user_id, tournament_id = tournament_id)
     print(query_set)
     if query_set:
-        return HttpResponse('Already registered')
+        mydata = dict()
+        mydata['response'] = 'Already registered';
+        return HttpResponse(json.dumps(mydata), content_type='application/json')
+
     else:
         #check joined count
         query_set = Tournament.objects.filter(id = tournament_id)
@@ -127,10 +130,18 @@ def addUserTournament(request):
             joined_count += 1
             Tournament.objects.filter(id = tournament_id).update(joined_count = joined_count)
             ProfileHelper.addUserTournament(user_id, tournament_id)
-            return HttpResponse('done')
+            mydata = dict()
+            mydata['response'] = 'Done';
+            return HttpResponse(json.dumps(mydata), content_type='application/json')
+
         #else return team full message
         else:
-            return HttpResponse('tournament full')
+            mydata = dict()
+            mydata['response'] = 'Tournament full';
+            return HttpResponse(json.dumps(mydata), content_type='application/json')
+
+
+
 
 
 
