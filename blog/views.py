@@ -137,10 +137,26 @@ def getUserTournamentList(request):
         tournament = json.loads(json_data)
 
         print(tournament)
-        tournament = tournament[0]['fields']
-        tournament['tournament_id'] = tournament_id
-        print(tournament)
-        tournament_list.append(tournament)
+        x = tournament[0]['fields']
+        if x['game_mode'] == 1:
+            x['game_mode'] = 'SOLO'
+        elif x['game_mode'] == 2:
+            x['game_mode'] = 'DUO'
+        else:
+            x['game_mode'] = 'SQUAD'
+
+        if x['platform'] == 1:
+            x['platform'] = 'Mobile'
+        elif x['platform'] == 2:
+            x['platform'] = 'PC'
+        elif x['platform'] == 3:
+            x['platform'] = 'XBOX'
+        else:
+            x['platform'] = 'Playstation'
+
+        x['tournament_id'] = tournament_id
+        print(x)
+        tournament_list.append(x)
 
     mydata = dict()
     mydata['tournament_list'] = tournament_list
