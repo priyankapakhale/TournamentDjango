@@ -108,6 +108,10 @@ def addUserTournament(request):
     user_id = req['user_id']
     tournament_id = req['tournament_id']
 
+    #first check if user has already registered or not
+    query_set = UserTournaments.objects.filter(user_id = user_id, tournament_id = tournament_id)
+    print(query_set)
+
     #check joined count
     query_set = Tournament.objects.filter(id = tournament_id)
     json_data = serializers.serialize('json',query_set)
