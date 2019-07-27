@@ -108,9 +108,27 @@ def addUserTournament(request):
     user_id = req['user_id']
     tournament_id = req['tournament_id']
 
-    ProfileHelper.addUserTournament(user_id, tournament_id)
+    #check joined count
+    query_set = Tournament.objects.get(id = tournament_id)
+    json_data = serializers.serialize(query_set)
+    data = json.loads(json_data)
+    data = data[0]['fields']
+    joined_count = data['joined_count']
+    team_count = data['team_count']
 
-    return HttpResponse('done')
+    #if tournament not full, then increment joined count by 1
+    if joined_count < team_count:
+        joined_count += 1
+        Tournament.objects.get(id = tournament_id).update(joined_count = joined_count)
+        ProfileHelper.addUserTournament(user_id, tournament_id)
+        return HttpResponse('done')
+    #else return team full message
+    else:
+        return HttpResponse('tournament full')
+
+
+
+
 
 @never_cache
 @csrf_exempt
