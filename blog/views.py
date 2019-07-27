@@ -109,26 +109,28 @@ def addUserTournament(request):
     tournament_id = req['tournament_id']
 
     #first check if user has already registered or not
-    query_set = UserTournaments.objects.filter(user_id = 2, tournament_id = tournament_id)
+    query_set = UserTournaments.objects.filter(user_id = user_id, tournament_id = tournament_id)
     print(query_set)
-
-    #check joined count
-    query_set = Tournament.objects.filter(id = tournament_id)
-    json_data = serializers.serialize('json',query_set)
-    data = json.loads(json_data)
-    data = data[0]['fields']
-    joined_count = data['joined_count']
-    team_count = data['team_count']
-
-    #if tournament not full, then increment joined count by 1
-    if joined_count < team_count:
-        joined_count += 1
-        Tournament.objects.filter(id = tournament_id).update(joined_count = joined_count)
-        ProfileHelper.addUserTournament(user_id, tournament_id)
-        return HttpResponse('done')
-    #else return team full message
+    if query_set:
+        return HttpResponse('Already registered')
     else:
-        return HttpResponse('tournament full')
+        #check joined count
+        query_set = Tournament.objects.filter(id = tournament_id)
+        json_data = serializers.serialize('json',query_set)
+        data = json.loads(json_data)
+        data = data[0]['fields']
+        joined_count = data['joined_count']
+        team_count = data['team_count']
+
+        #if tournament not full, then increment joined count by 1
+        if joined_count < team_count:
+            joined_count += 1
+            Tournament.objects.filter(id = tournament_id).update(joined_count = joined_count)
+            ProfileHelper.addUserTournament(user_id, tournament_id)
+            return HttpResponse('done')
+        #else return team full message
+        else:
+            return HttpResponse('tournament full')
 
 
 
