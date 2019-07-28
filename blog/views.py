@@ -62,9 +62,6 @@ def handlePayment(request):
 @csrf_exempt
 def getTournamentList(request):
 
-    req = request.POST
-
-
     query_set = Tournament.objects.all()
     json_data = serializers.serialize('json', query_set)
     data = json.loads(json_data)

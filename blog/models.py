@@ -32,9 +32,15 @@ class Tournament(models.Model):
         (2, 'DUO'),
         (3, 'SQUAD'),
     )
-
+    STATUSES = (
+        (1, 'Upcoming'),
+        (2, 'Ongoing'),
+        (3, 'Past'),
+    )
 
     id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=100)
+    status = models.IntegerField(choices = STATUSES)
     platform = models.IntegerField(choices = PLATFORMS)
     game_name = models.CharField(max_length=50)
     game_mode = models.IntegerField(choices = GAME_MODES)
