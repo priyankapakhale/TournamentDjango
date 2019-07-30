@@ -117,24 +117,27 @@ def addUserTournament(request):
         data = data[0]['fields']
         joined_count = data['joined_count']
         team_count = data['team_count']
+        is_registration_open = data['is_registration_open']
 
         #if tournament not full, then increment joined count by 1
-        if joined_count < team_count:
+        if joined_count < team_count and is_registration_open:
             joined_count += 1
             Tournament.objects.filter(id = tournament_id).update(joined_count = joined_count)
             ProfileHelper.addUserTournament(user_id, tournament_id)
+
+            #change is_registration_open field to false is team_count = joined_count
+            if team_count == joined_count:
+                Tournament.objects.filter(id = tournament_id).update(is_registration_open = False)
+
             mydata = dict()
             mydata['response'] = 'Done';
             return HttpResponse(json.dumps(mydata), content_type='application/json')
 
-        #else return team full message
+        #else return team full message and change
         else:
             mydata = dict()
-            mydata['response'] = 'Tournament full';
+            mydata['response'] = 'Registration is closed';
             return HttpResponse(json.dumps(mydata), content_type='application/json')
-
-
-
 
 
 

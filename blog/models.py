@@ -55,6 +55,8 @@ class Tournament(models.Model):
     contact = models.CharField(max_length=100)
     prize = models.CharField(max_length=5000)
     rules = models.CharField(max_length=5000)
+    is_registration_open = models.BooleanField()
+
 
 
 class UserTournaments(models.Model):
