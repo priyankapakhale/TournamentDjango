@@ -167,7 +167,7 @@ def getUserTournamentList(request):
         tournament_id = x['tournament']
         print(tournament_id)
         query_set = Tournament.objects.filter(id = tournament_id)
-        json_data = serializers.serialize('json',query_set)
+        json_data = serializers.serialize('json', query_set)
         tournament = json.loads(json_data)
 
         print(tournament)
@@ -197,3 +197,22 @@ def getUserTournamentList(request):
 
     return HttpResponse(json.dumps(mydata), content_type='application/json')
 
+@never_cache
+@csrf_exempt
+def hasRegisteredForTournament(request):
+    req = request.POST
+    user_id = req['user_id']
+    tournament_id = req['tournament_id']
+
+    query_set = UserTournaments.objects.filter(user_id = user_id, tournament_id = tournament_id)
+    json_data = serializers.serialize('json', query_set)
+    data = json.loads(json_data)
+
+    mydata = dict()
+
+    if len(data) != 0:
+        mydata['response'] = True
+    else:
+        mydata['response'] = False
+
+    return HttpResponse(json.dumps(mydata), content_type='application/json')
