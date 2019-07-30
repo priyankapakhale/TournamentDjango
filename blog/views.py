@@ -7,6 +7,7 @@ from blog.paytm import Checksum
 from django.core import serializers
 from .models import Tournament, Order, UserOrders, UserTournaments
 from blog import ProfileHelper
+from django.utils import timezone
 
 
 @never_cache
@@ -127,7 +128,9 @@ def addUserTournament(request):
 
             #change is_registration_open field to false is team_count = joined_count
             if team_count == joined_count:
-                Tournament.objects.filter(id = tournament_id).update(is_registration_open = False)
+                #also change registration end date to now
+                Tournament.objects.filter(id = tournament_id).update(is_registration_open = False, registration_end_date = timezone.now())
+
 
             mydata = dict()
             mydata['response'] = 'Done';
