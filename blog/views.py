@@ -211,8 +211,8 @@ def hasRegisteredForTournament(request):
     mydata = dict()
 
     if len(data) != 0:
-        mydata['response'] = True
+        mydata['response'] = 'true'
     else:
-        mydata['response'] = False
+        mydata['response'] = 'false'
 
     return HttpResponse(json.dumps(mydata), content_type='application/json')
