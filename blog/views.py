@@ -63,7 +63,7 @@ def handlePayment(request):
 @csrf_exempt
 def getTournamentList(request):
 
-    query_set = Tournament.objects.all().order.by('-tournament_date')
+    query_set = Tournament.objects.all().order_by('-tournament_date')
     json_data = serializers.serialize('json', query_set)
     data = json.loads(json_data)
 
