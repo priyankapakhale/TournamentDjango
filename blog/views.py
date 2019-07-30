@@ -62,6 +62,8 @@ def handlePayment(request):
 @never_cache
 @csrf_exempt
 def getTournamentList(request):
+    req = request.POST
+    user_id = req['user_id']
 
     query_set = Tournament.objects.all().order_by('tournament_date')
     json_data = serializers.serialize('json', query_set)
@@ -86,6 +88,11 @@ def getTournamentList(request):
         else:
             x['platform'] = 'Playstation'
         x['tournament_id'] = item['pk']
+        query_set = UserTournaments.objects.filter(user_id = user_id, tournament_id = item['pk'])
+        if not query_set:
+            x['has_registered'] = False
+        else:
+            x['has_registered'] = True
         tournament_list.append(x)
 
 
