@@ -29,7 +29,8 @@ urlpatterns = [
     url(r'^handlePayment/',views.handlePayment),
     url(r'^addUserTournament/', views.addUserTournament),
     url(r'^getUserTournamentList/',views.getUserTournamentList),
-
+    url(r'^getUser/',views.getUser),
+    url(r'^addUser/',views.addUser)
 
 
 ]
