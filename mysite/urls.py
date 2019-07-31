@@ -24,7 +24,13 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     #url(r'^admin/', admin.site.urls),
-
+    url(r'^processOrder/', views.processOrder),
+    url(r'^getTournamentList/', views.getTournamentList),
+    url(r'^handlePayment/',views.handlePayment),
+    url(r'^addUserTournament/', views.addUserTournament),
+    url(r'^getUserTournamentList/',views.getUserTournamentList),
+    url(r'^getUser/',views.getUser),
+    url(r'^addUser/',views.addUser)
 
 
 ]
