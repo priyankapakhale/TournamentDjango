@@ -93,17 +93,28 @@ def processOrder(request):
 def handlePayment(request):
     return HttpResponse('done')
 
+def getUserIdFromEmail(email):
+    # get user_id from email
+    query_set = User.objects.filter(email=email)
+    json_data = serializers.serialize('json', query_set)
+    data = json.loads(json_data)
+    data = data[0]
+    user_id = data['pk']
+
+    return user_id
+
 @never_cache
 @csrf_exempt
 def getTournamentList(request):
     req = request.POST
-    user_id = req['user_id']
+    email = req['email']
+    user_id = getUserIdFromEmail(email)
 
     query_set = Tournament.objects.all().order_by('tournament_date')
     json_data = serializers.serialize('json', query_set)
     data = json.loads(json_data)
 
-    tournament_list =list()
+    tournament_list = list()
     for item in data:
         x = item['fields']
         if x['game_mode'] == 1:
@@ -140,7 +151,8 @@ def getTournamentList(request):
 @csrf_exempt
 def addUserTournament(request):
     req = request.POST
-    user_id = req['user_id']
+    email = req['email']
+    user_id = getUserIdFromEmail(email)
     tournament_id = req['tournament_id']
 
     #first check if user has already registered or not
@@ -191,8 +203,8 @@ def addUserTournament(request):
 @csrf_exempt
 def getUserTournamentList(request):
     req = request.POST
-    #user_id = req['user_id']
-    user_id = 1
+    email = req['email']
+    user_id = getUserIdFromEmail(email)
 
     query_set = UserTournaments.objects.filter(user = user_id)
     json_data = serializers.serialize('json', query_set)
