@@ -17,7 +17,9 @@ def addUser(request):
     password = req['password']
     name = req['name']
 
-    ProfileHelper.addUser(email, password, name)
+    #ProfileHelper.addUser(email, password, name)
+    u = User(email = email, password = password, name = name)
+    u.save()
 
     mydata = dict()
     mydata['response'] = 'Done'
