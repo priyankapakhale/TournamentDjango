@@ -109,7 +109,7 @@ def getUserIdFromEmail(email):
 @csrf_exempt
 def getTournamentList(request):
     req = request.POST
-    email = req['email']
+    email = req.get('email')
     user_id = getUserIdFromEmail(email)
 
     query_set = Tournament.objects.all().order_by('tournament_date')
