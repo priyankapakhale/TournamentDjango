@@ -97,7 +97,7 @@ def handlePayment(request):
 
 def getUserIdFromEmail(email):
     # get user_id from email
-    query_set = User.objects.filter(email=email)
+    query_set = User.objects.filter(email = email)
     json_data = serializers.serialize('json', query_set)
     data = json.loads(json_data)
     print("fetched user = ")
@@ -112,6 +112,8 @@ def getUserIdFromEmail(email):
 def getTournamentList(request):
     req = request.POST
     email = req.get('email')
+    print("email = ")
+    print(email)
     user_id = getUserIdFromEmail(email)
 
     query_set = Tournament.objects.all().order_by('tournament_date')
