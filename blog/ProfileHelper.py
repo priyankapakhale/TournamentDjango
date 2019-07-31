@@ -1,4 +1,4 @@
-from .models import User, Order, Tournament, UserTournaments, UserOrders, User
+from .models import User, Order, Tournament, UserTournaments, UserOrders
 
 def addUserTournament(user_id, tournament_id):
     user = User.objects.filter(id = user_id)
