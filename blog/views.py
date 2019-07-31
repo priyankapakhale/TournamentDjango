@@ -100,6 +100,8 @@ def getUserIdFromEmail(email):
     query_set = User.objects.filter(email=email)
     json_data = serializers.serialize('json', query_set)
     data = json.loads(json_data)
+    print("fetched user = ")
+    print(data)
     data = data[0]
     user_id = data['pk']
 
