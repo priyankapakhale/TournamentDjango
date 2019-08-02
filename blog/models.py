@@ -51,11 +51,11 @@ class Tournament(models.Model):
     team_count = models.IntegerField()
     joined_count = models.IntegerField()
     host_name = models.CharField(max_length=50)
-    description = models.CharField(max_length=5000)
-    structure = models.CharField(max_length=5000)
+    description = models.TextField(max_length=5000)
+    structure = models.TextField(max_length=5000)
     contact = models.CharField(max_length=100)
-    prize = models.CharField(max_length=5000)
-    rules = models.CharField(max_length=5000)
+    prize = models.TextField(max_length=5000)
+    rules = models.TextField(max_length=5000)
     is_registration_open = models.BooleanField()
 
 
