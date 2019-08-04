@@ -298,8 +298,7 @@ def setProfilePic(request):
     profile_pic_uri = req['profile_pic_uri']
     email = req['email']
     user_id = getUserIdFromEmail(email)
-    user = User.objects.filter(id = user_id)
-    Profile.objects.filter(user = user).update(profile_pic_uri = profile_pic_uri)
+    Profile.objects.filter(user_id = user_id).update(profile_pic_uri = profile_pic_uri)
 
     mydata = dict()
     mydata['response'] = 'Profile pic uri updated'
