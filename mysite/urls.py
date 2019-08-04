@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^addUserTournament/', views.addUserTournament),
     url(r'^getUserTournamentList/',views.getUserTournamentList),
     url(r'^getUser/',views.getUser),
-    url(r'^addUser/',views.addUser)
-
+    url(r'^addUser/',views.addUser),
+    url(r'^setProfilePic/',views.setProfilePic),
 
 ]
