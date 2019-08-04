@@ -19,7 +19,7 @@ class Profile(models.Model):
     id = models.AutoField(primary_key = True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mobile_number = models.CharField(max_length=10)
-    profile_pic = models.ImageField(upload_to="images", blank=True, null=True)
+    profile_pic_uri = models.CharField(max_length=500)
 
 
 class UserOrders(models.Model):

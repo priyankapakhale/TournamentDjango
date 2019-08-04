@@ -37,4 +37,4 @@ urlpatterns = [
     url(r'^addUser/',views.addUser),
     url(r'^setProfilePic/',views.setProfilePic),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
