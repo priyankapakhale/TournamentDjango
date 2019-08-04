@@ -18,8 +18,8 @@ class User(models.Model):
 class Profile(models.Model):
     id = models.AutoField(primary_key = True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    mobile_number = models.CharField(max_length=10)
-    profile_pic_uri = models.CharField(max_length=500)
+    mobile_number = models.CharField(max_length=10, null=True)
+    profile_pic_uri = models.CharField(max_length=500, null=True)
 
 
 class UserOrders(models.Model):

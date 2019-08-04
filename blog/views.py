@@ -20,7 +20,7 @@ def addUser(request):
     #ProfileHelper.addUser(email, password, name)
     u = User(email = email, password = password, name = name)
     u.save()
-
+    addProfile(email)
     mydata = dict()
     mydata['response'] = 'Done'
 
@@ -278,18 +278,31 @@ def hasRegisteredForTournament(request):
 
 @never_cache
 @csrf_exempt
+def addProfile(email):
+    user_id = getUserIdFromEmail(email)
+    user = User.objects.filter(id = user_id)
+    user = user[0]
+    p = Profile(user = user)
+    p.save()
+    mydata = dict()
+    mydata['response'] = 'Profile created'
+    print(mydata)
+
+    return HttpResponse(json.dumps(mydata), content_type='application/json')
+
+
+@never_cache
+@csrf_exempt
 def setProfilePic(request):
     req = request.POST
     profile_pic_uri = req['profile_pic_uri']
     email = req['email']
-
     user_id = getUserIdFromEmail(email)
     user = User.objects.filter(id = user_id)
-    p = Profile(user = user[0], mobile_number="7777777777", profile_pic_uri = profile_pic_uri)
-    p.save()
+    Profile.objects.filter(user = user).update(profile_pic_uri = profile_pic_uri)
 
     mydata = dict()
-    mydata['response'] = 'Done'
+    mydata['response'] = 'Profile pic uri updated'
     print(mydata)
 
     return HttpResponse(json.dumps(mydata), content_type='application/json')
