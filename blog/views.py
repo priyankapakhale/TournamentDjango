@@ -284,7 +284,8 @@ def setProfilePic(request):
     email = req['email']
 
     user_id = getUserIdFromEmail(email)
-    p = Profile(user = user_id, mobile_number="7777777777", profile_pic = profile_pic)
+    user = User.objects.filter(id = user_id)
+    p = Profile(user = user, mobile_number="7777777777", profile_pic = profile_pic)
     p.save()
 
     mydata = dict()
