@@ -1,4 +1,4 @@
-from .models import User, Order, Tournament, UserTournaments, UserOrders
+from .models import User, Order, Tournament, UserTournaments, UserOrders, Profile
 
 def addUserTournament(user_id, tournament_id):
     user = User.objects.filter(id = user_id)
@@ -18,3 +18,5 @@ def addUser(email, password, name):
         name = name
     )
     u.save()
+
+
