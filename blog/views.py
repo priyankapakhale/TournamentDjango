@@ -5,7 +5,7 @@ from django.http import HttpResponse
 import json
 from blog.paytm import Checksum
 from django.core import serializers
-from .models import Tournament, Order, UserOrders, UserTournaments, User
+from .models import Tournament, Order, UserOrders, UserTournaments, User, Profile
 from blog import ProfileHelper
 from django.utils import timezone
 
@@ -273,5 +273,21 @@ def hasRegisteredForTournament(request):
         mydata['response'] = 'true'
     else:
         mydata['response'] = 'false'
+
+    return HttpResponse(json.dumps(mydata), content_type='application/json')
+
+@never_cache
+@csrf_exempt
+def setProfilePic(request):
+    req = request.POST
+    profile_pic = req['profile_pic']
+    email = req['email']
+
+    user_id = getUserIdFromEmail(email)
+    p = Profile(user = user_id, mobile_number="7777777777", profile_pic = profile_pic)
+    p.save()
+
+    mydata = dict()
+    mydata['response'] = 'Done'
 
     return HttpResponse(json.dumps(mydata), content_type='application/json')
