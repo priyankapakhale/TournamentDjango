@@ -290,5 +290,6 @@ def setProfilePic(request):
 
     mydata = dict()
     mydata['response'] = 'Done'
+    print(mydata)
 
     return HttpResponse(json.dumps(mydata), content_type='application/json')
