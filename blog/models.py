@@ -18,7 +18,7 @@ class User(models.Model):
 class Profile(models.Model):
     id = models.AutoField(primary_key = True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    mobile_number = models.CharField(length = 10)
+    mobile_number = models.CharField(max_length=10)
     profile_pic = models.ImageField(upload_to='images/')
 
 
