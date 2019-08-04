@@ -20,6 +20,7 @@ import blog
 from django.urls import path, include
 from django.conf.urls import url
 from blog import views
+import settings
 
 
 urlpatterns = [
