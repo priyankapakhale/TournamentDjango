@@ -305,3 +305,21 @@ def setProfilePic(request):
     print(mydata)
 
     return HttpResponse(json.dumps(mydata), content_type='application/json')
+
+@never_cache
+@csrf_exempt
+def getProfile(request):
+    req = request.POST
+    email = req['email']
+
+    user_id = getUserIdFromEmail(email)
+    query_set = Profile.objects.filter(user_id = user_id)
+    json_data = serializers.serialize('json', query_set)
+    data = json.loads(json_data)
+
+    data = data[0]
+    mydata = dict()
+    mydata['id'] = data['pk']
+    mydata['profile'] = data['fields']
+
+    return HttpResponse(json.dumps(mydata), content_type = 'application/json')

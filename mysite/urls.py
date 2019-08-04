@@ -36,5 +36,6 @@ urlpatterns = [
     url(r'^getUser/',views.getUser),
     url(r'^addUser/',views.addUser),
     url(r'^setProfilePic/',views.setProfilePic),
+    url(r'^getProfile/',views.getProfile),
 
 ]
