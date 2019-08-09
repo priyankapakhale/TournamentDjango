@@ -63,7 +63,7 @@ class Tournament(models.Model):
     win_prize = models.FloatField(default=0)
     per_kill = models.FloatField(default=0)
     tpp_fpp = models.IntegerField(choices=TPP_FPP)
-    map = models.IntegerField(choice = MAPS)
+    map = models.IntegerField(choices = MAPS)
 
 
     description = models.TextField(max_length=5000)
