@@ -123,21 +123,7 @@ def getTournamentList(request):
     tournament_list = list()
     for item in data:
         x = item['fields']
-        if x['game_mode'] == 1:
-            x['game_mode'] = 'SOLO'
-        elif x['game_mode'] == 2:
-            x['game_mode'] = 'DUO'
-        else:
-            x['game_mode'] = 'SQUAD'
 
-        if x['platform'] == 1:
-            x['platform'] = 'Mobile'
-        elif x['platform'] == 2:
-            x['platform'] = 'PC'
-        elif x['platform'] == 3:
-            x['platform'] = 'XBOX'
-        else:
-            x['platform'] = 'Playstation'
         x['tournament_id'] = item['pk']
         query_set = UserTournaments.objects.filter(user_id = user_id, tournament_id = item['pk'])
         if not query_set:
