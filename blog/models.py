@@ -28,7 +28,7 @@ class UserOrders(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
 class Tournament(models.Model):
-    GAME_MODES = (
+    TYPES = (
         (1, 'SOLO'),
         (2, 'DUO'),
         (3, 'SQUAD'),
@@ -55,7 +55,7 @@ class Tournament(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     status = models.IntegerField(choices = STATUSES)
-    game_mode = models.IntegerField(choices = GAME_MODES)
+    type = models.IntegerField(choices = TYPES)
     entry_fee = models.FloatField(default=0)
     tournament_date = models.DateTimeField()
     team_count = models.IntegerField()
